@@ -1,6 +1,6 @@
 // src/HomePage.js
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import cal from './images/cal.webp';
 import database from './images/database.webp';
 import guide from './images/guide.png';
