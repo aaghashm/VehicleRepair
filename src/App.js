@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import AdminPage from './AdminPage';
 import BikeRepairGuidelines from './BikeRepairGuidelines';
 import Footer from './Footer';
@@ -17,22 +17,15 @@ import './styles.css';
 function App() {
   const user = JSON.parse(localStorage.getItem('user'));
   console.log('User:', user);
-
   return (
     <Router>
       {(!user || user.role === 'user') && <NavBar />}
       <main className="main-content">
         <Routes>
-          {/* Conditional Redirect */}
-          <Route
-            path="/"
-            element={
-              user && user.role === 'admin' ? <Navigate to="/admin" /> : <HomePage />
-            }
-          />
+          <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/admin/*" element={user && user.role === 'admin' ? <AdminPage /> : <Navigate to="/" />} />
+          <Route path="/admin/*" element={<AdminPage />} />
           <Route path="/service-calculator" element={<ServiceCalculator />} />
           <Route path="/guide" element={<Guide />} />
           <Route path="/video-assistance" element={<BikeRepairGuidelines />} />
@@ -42,6 +35,7 @@ function App() {
         </Routes>
       </main>
       {(!user || user.role === 'user') && <Footer />}
+      
     </Router>
   );
 }

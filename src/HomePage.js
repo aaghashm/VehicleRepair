@@ -9,6 +9,14 @@ import tips from './images/tips.webp';
 import video from './images/video.jpg';
 import './styles.css';
 function HomePage() {
+  const user = JSON.parse(localStorage.getItem('user'));
+  const navigate = useNavigate();
+
+  // Redirect to admin page if the user is an admin
+  if (user && user.role === 'admin') {
+    navigate('/admin');
+    return null; // Avoid rendering the HomePage content if redirecting
+  }
   return (
     <div className="homepage">
       <center><h1><b><i>Drive it better!!</i></b></h1></center>
