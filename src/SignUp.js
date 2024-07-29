@@ -32,22 +32,6 @@ function SignUp() {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <div className="role-toggle">
-            <button
-              type="button"
-              className={role === 'user' ? 'active' : ''}
-              onClick={() => setRole('user')}
-            >
-              User
-            </button>
-            <button
-              type="button"
-              className={role === 'admin' ? 'active' : ''}
-              onClick={() => setRole('admin')}
-            >
-              Admin
-            </button>
-          </div>
           <button type="submit">Sign Up</button>
         </form>
       </div>
